@@ -1,46 +1,37 @@
 const getAllCountries = require("../controllers/getAllCountries");
-const getCountryById = require("../controllers/getCountryById");
+const getCountryById = require("../controllers/getCountryByID");
 const getCountryByName = require("../controllers/getCountryByName");
 
-const getRecipeByIdHandler = async (req, res) => {
-  const { idRecipe } = req.params;
-
-  const source = isNaN(idRecipe) ? "bdd" : "api";
-
-  try {
-    const recipeId = await getRecipeById(idRecipe, source);
-    res.status(200).json(recipeId);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const getRecipeByNameHandler = async (req, res) => {
+const getCountryByNameHandler = async (req, res) => {
   const { name } = req.query;
+  console.log(name);
 
   try {
-    const response = name ? await getRecipeByName(name) : await getAllRecipes();
+    const response = await getCountryByName(name);
+
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-const createRecipeHandler = async (req, res) => {
-  const { name, image, summary, healthScore, steps, diets } = req.body;
-
+const getAllCountriesHandler = async (req, res) => {
+  const { name } = req.query;
   try {
-    if (!name || !image || !summary || !healthScore || !steps)
-      res.status(400).json({ message: "Missing data" });
+    let response = name
+      ? await getCountryByName(name)
+      : await getAllCountries();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-    const response = await createRecipe(
-      name,
-      image,
-      summary,
-      healthScore,
-      steps,
-      diets
-    );
+const getCountryByIdHandler = async (req, res) => {
+  const { idCountry } = req.params;
+  console.log(idCountry);
+  try {
+    const response = await getCountryById(idCountry);
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -48,7 +39,7 @@ const createRecipeHandler = async (req, res) => {
 };
 
 module.exports = {
-  getRecipeByIdHandler,
-  createRecipeHandler,
-  getRecipeByNameHandler,
+  getAllCountriesHandler,
+  getCountryByIdHandler,
+  getCountryByNameHandler,
 };

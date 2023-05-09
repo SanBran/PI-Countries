@@ -1,9 +1,9 @@
 const { Country, Activity } = require("../db");
 
-const getAllCountries = async () => {
-  const countries = await Country.findAll({
+const getActivities = async () => {
+  const activities = await Activity.findAll({
     include: {
-      model: Activity,
+      model: Country,
       attributes: ["name"],
       through: {
         attributes: [],
@@ -11,7 +11,7 @@ const getAllCountries = async () => {
     },
   });
 
-  return countries;
+  return activities;
 };
 
-module.exports = getAllCountries;
+module.exports = getActivities;
