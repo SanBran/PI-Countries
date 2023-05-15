@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
+
+.bigContainer{
+
+}
+
+.container{
+
+    font-family:'Roboto';
+    background-color: rgb(250, 250, 250);
+    
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    width: 60vw;
+    height: 35vw;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39)
+}
+
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(250, 250, 250);
+    margin-left: 180px;
+    width: 30vw;
+    height: 70%;
+    padding: 20px 20px;
+    
+    
+}
+
+
+
+.inputBox:nth-child(2n){
+    justify-content: end;
+}
+
+.inputBox{
+   display: flex;
+   flex-wrap: wrap;
+   width: 40%; 
+   padding-bottom: 30px;
+}
+
+.inputBox input{
+    height:35px ;
+    width: 95%;
+    border-radius: 5px;
+    border: solid 1px rgb(206, 206, 206);
+}
+
+.inputBox textarea{
+    height:35px ;
+    width: 95%;
+    border-radius: 5px;
+    border: solid 1px rgb(206, 206, 206);
+}
+
+.inputBox label{
+    position: relative;
+    text-align: start;
+    width: 95%;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.title{
+  position: relative;  
+  left: -9%;
+  top: 2%;
+  font-weight: bold;
+}
+
+.select{
+    width: 224px;
+    top: -12%;
+    left: .4%;
+    height: 30px ;
+    z-index: 5;
+}
+/* 
+.summary{
+    position: relative;
+    top: -30%;
+}
+
+.summaryInput{
+    position: relative;
+    top: -30%;
+    width: 100%;
+}
+
+.steps{
+    position: relative;
+    top: -30%;
+}
+
+.stepsInput{
+    position: relative;
+    top: -30%;
+    width: 100%;
+}
+
+.image{
+    position: relative;
+    top: -60%; 
+}
+
+.imageInput{
+    position: relative;
+    top: -60%; 
+}
+
+.diets{
+    position: relative;
+    top: -60%;  
+} */
+
+.errors{
+    position: relative;
+    top: 5%;
+    color: red;
+
+}
+
+.btn{
+    position: absolute;
+    left: 43%;
+    top: 75%;
+}
+
+.btnCreateDisabled{
+    position: absolute;
+    left: 43%;
+    top: 75%;
+    background-color: gray;
+}

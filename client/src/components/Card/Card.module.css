@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border: solid .5mm gray; 
+    width: 360px;
+    height: 400px;
+    
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    overflow: hidden;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    width: 361px;
+    height: 250px;
+}
+
+.name{
+    position: relative;
+    top: -25px;
+}
+
+.diets{
+    position: relative;
+    top: -50px; 
+}
+.link{
+    text-decoration: none;
+    color:black;
+}
+.hs{
+    position: absolute;
+    top: -18px;
+    right: 2px;
+    z-index: 10;
+    color: rgb(44, 44, 44);
+    border-radius: 50%;
+    background-color: rgba(255, 166, 0, 0.918);
+    box-shadow: 5px black;
+    padding: 10px;
+
+}

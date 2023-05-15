@@ -14,13 +14,13 @@ const createActivity = async (
     season,
   });
 
-  let countrie = await Country.findAll({
+  let country = await Country.findAll({
     where: {
       name: countries,
     },
   });
 
-  await newActivity.addCountry(countrie);
+  await newActivity.addCountry(country);
 
   return "Activity created.";
 };
