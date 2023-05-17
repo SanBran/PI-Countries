@@ -151,16 +151,13 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
                 onChange={handleSelectC}
                 placeholder="Please select the countries where you can practice this activity"   
                     />
-            </div>
+            </div>           
             
-                    {(errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) 
+        </form>
+        {(errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) 
                     ?  <button className={styles.btnCreateDisabled} disabled>Create Activity</button>
                     :  <button className={styles.btn}>Create Activity</button>
                     }
-                 
-            
-        </form>
-        
      </div>
      </div>
    )

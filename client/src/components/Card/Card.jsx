@@ -9,8 +9,8 @@ const {name, flag, continent, id} = country
         <div className={styles.container}>
         <Link className={styles.link} to={`/detail/${id}`}>
             <img className={styles.image} src= {flag} alt="Card"/>
-            <h2 className={styles.name}>{name}</h2>
             <h2 className={styles.hs}>{continent}</h2>
+            <h2 className={styles.name}>{name}</h2>
         </Link>
         </div>
     )

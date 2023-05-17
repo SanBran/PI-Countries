@@ -4,7 +4,7 @@ import styles from "./NavBar.module.css"
 
 import SearchBar from "./SearchBar/SearchBar"
 
-
+import logo from "../../sources/logo.png"
 
 
 const NavBar = ({setCurrentPage, setLoading, setActive}) => {
@@ -23,7 +23,7 @@ const NavBar = ({setCurrentPage, setLoading, setActive}) => {
     return (
         <nav className={styles.nav}>
             <a onClick={refreshPage} >
-                COUNTRIES
+            <img className={styles.logo} src={logo} alt="Logo"/>
             </a>
             <SearchBar setCurrentPage={setCurrentPage} setLoading={setLoading} setIsActive={setActive}/>
             <Link to='/form' className={styles.create}>

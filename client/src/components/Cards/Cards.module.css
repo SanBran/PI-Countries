@@ -1,19 +1,16 @@
 
 .container {
-  
+   position: relative;
+   top: 200px;
    
-    
-   top: 5%;
     width: 90vw;
+    height: fit-content;
     
-    margin-left: 5vw;
     
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem,25rem));
-    grid-gap: 20px;
-
+    display: flex;
+    flex-wrap: wrap;
     justify-content:center;
-    
+    gap: 40px;
     
 
 

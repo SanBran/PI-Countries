@@ -1,18 +1,13 @@
 
 
 .container {
-    position: relative;
-    
-    max-width: 100rem;
-    width: 100%;
-    bottom: -100px;
-    left: 23%;
-    
-    display: flex;
    
+   
+    display: flex;
     gap: 1rem;
     align-items:center;
-    margin-bottom: 20px;
+    justify-content: center;
+
     
     
 
@@ -26,7 +21,12 @@
     border-radius: 0.2rem;
     border:solid grey 1px;
     color: #000000;
-    padding: 8px 12px;
+    align-items: center;
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     transition: 0.3s;
   
@@ -36,17 +36,21 @@
 .active {
     font-family: "Poppins", sans-serif;
     font-size: large;
-    background-color: #fdb241;
+    background-color: #ff6600;
     border-radius: 0.2rem;
     border:solid grey 1px;
-    color: #000000;
-    padding: 8px 12px;
+    color: #ffffff;
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .page:hover{
-    background-color: #fdb241;
+    background-color: #ff6600;
     
     transform: scale(1.1);
 }
@@ -57,7 +61,7 @@
     
     color: white;
     padding: 0.5rem 1rem;
-	background-color: #ffa31a;
+	background-color: #ff6600;
     border: none;
     
 	
@@ -70,9 +74,9 @@
     font-family: "Poppins", sans-serif;
     font-size: large;
     
-    color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255);
     padding: 0.5rem 1rem;
-	background-color: rgba(255, 255, 255, 0);
+	background-color: rgb(192, 192, 192);
     border: none;
     
 	
@@ -88,7 +92,7 @@
     width: 88px;
     color: white;
     padding: 0.5rem 1rem;
-	background-color: #ffa31a;
+	background-color: #ff6600;
     border: none;
     right: 20%;
 	
@@ -101,9 +105,9 @@
     font-family: "Poppins", sans-serif;
     font-size: large;
     padding: 10;
-    color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255);
     padding: 0.5rem 1rem;
-	background-color: rgba(255, 255, 255, 0);
+	background-color: rgb(192, 192, 192);
     border: none;
     right: 20%;
 	
@@ -115,12 +119,12 @@
 
 	
 	.Right:hover {
-		background-color: rgb(255, 223, 78);
+		background-color: #ff6600;
 		
       
 	}
 	
 	
     .Left:hover {
-		background-color: rgb(78, 134, 255);
+		background-color: #ff6600;
 	}

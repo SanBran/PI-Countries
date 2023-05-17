@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_COUNTRIES_BY_NAME:
-      return { ...state, countriesCopy: action.payload };
+      return { ...state, countries: action.payload };
 
     case GET_DETAIL:
       return { ...state, countryDetail: action.payload };
@@ -40,43 +40,37 @@ const reducer = (state = initialState, action) => {
       return { ...state };
 
     case ORDER_NAME:
-      const allCountries = state.countriesCopy;
       let countriesOrderbyName = [];
 
       switch (action.payload) {
         case "Sort by Name":
           return {
             ...state,
-            countriesCopy: allCountries,
+            countries: state.countries,
           };
         case "A-Z":
-          countriesOrderbyName = state.countriesCopy.sort((a, b) => {
-            if (a.name > b.name) {
-              return 1;
-            }
-            if (b.name > a.name) {
-              return -1;
-            }
-            return 0;
-          });
-
           return {
             ...state,
-            countriesCopy: countriesOrderbyName,
+            countries: state.countries.sort((a, b) => {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+            }),
           };
         case "Z-A":
-          countriesOrderbyName = state.countriesCopy.sort((a, b) => {
-            if (a.name > b.name) {
-              return -1;
-            }
-            if (b.name > a.name) {
-              return 1;
-            }
-            return 0;
-          });
           return {
             ...state,
-            countriesCopy: countriesOrderbyName,
+            countries: state.countries.sort((a, b) => {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+            }),
           };
         default:
           break;
@@ -91,14 +85,14 @@ const reducer = (state = initialState, action) => {
         case "Ascending":
           return {
             ...state,
-            countries: state.countriesCopy.sort(
+            countries: state.countries.sort(
               (a, b) => a.population - b.population
             ),
           };
         case "Descending":
           return {
             ...state,
-            countries: state.countriesCopy.sort(
+            countries: state.countries.sort(
               (a, b) => b.population - a.population
             ),
           };
@@ -107,34 +101,29 @@ const reducer = (state = initialState, action) => {
       }
 
     case FILTER_CONTINENT:
-      const filteredCountriesByContinent =
-        action.payload === "Filter by Continent"
-          ? state.countriesCopy
-          : state.countriesCopy.filter(
-              (country) => country.continent === action.payload
-            );
+      const filteredCountriesByContinent = state.countriesCopy.filter(
+        (country) => country.continent === action.payload
+      );
       return {
         ...state,
         countries:
           action.payload === "Filter by Continent"
-            ? state.countriesCopy
+            ? state.countries
             : filteredCountriesByContinent,
       };
 
     case FILTER_ACTIVITY:
-      const filteredCountriesByActivity =
-        action.payload === "Filter by Activity"
-          ? state.countriesCopy
-          : state.countriesCopy.filter((country) =>
-              country.activities.some(
-                (activity) => activity.name === action.payload
-              )
-            );
+      const filteredCountriesByActivity = state.countriesCopy.filter(
+        (country) =>
+          country.activities.some(
+            (activity) => activity.name === action.payload
+          )
+      );
       return {
         ...state,
         countries:
           action.payload === "Filter by Activity"
-            ? state.countriesCopy
+            ? state.countries
             : filteredCountriesByActivity,
       };
 

@@ -16,16 +16,13 @@ export default function Home ({currentPage, setCurrentPage, active, setActive, s
     const activities = useSelector(state => state.activities)    
     const [order, setOrder] = useState('');
 
-    const countriesPerPage =  10;
+    const countriesPerPage =  10; // Cards por página
+    const paginationSize = 7; // paginas visibles en paginación
     const lastCountryIndex = currentPage * countriesPerPage; 
     const firstCountryIndex = lastCountryIndex - countriesPerPage; 
     const currentCountry = (!allCountries.error) && allCountries.slice(firstCountryIndex, lastCountryIndex);
 
-    const paginado = (pageNumbers) => {
-        setCurrentPage(pageNumbers)
-        setActive(pageNumbers)
-    }
-
+    
     useEffect(() => {
 
         if (refresh) {
@@ -114,16 +111,17 @@ export default function Home ({currentPage, setCurrentPage, active, setActive, s
             <div className={styles.cards}>
             <Cards currentCountry={currentCountry}/>
             </div>
+            <div className={styles.paginationContainer}>
             <Pagination 
                         allCountries={allCountries.length} 
-                        recipesPerPage={countriesPerPage}
-                        paginado={paginado}
+                        countriesPerPage={countriesPerPage}
+                        paginationSize={paginationSize}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         active={active}
                         setActive={setActive}
                         />
-
+            </div>
         </div>
     )
 }
