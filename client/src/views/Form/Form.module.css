@@ -1,25 +1,27 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
+
 
 .bigContainer{
-border: solid green;
+
 height: 100vh;
 width: 100vw;
 display: flex;
 align-items: center;
 justify-content: center;
+background-color: rgba(203, 214, 228, 0.349);
 }
 
 .container{
-    border: solid red;
+   
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     
-    font-family:'Roboto';
+    
     background-color: rgb(250, 250, 250);
     
-    width: 60vw;
+    width: 40vw;
     height: 35vw;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39)
 }
@@ -29,7 +31,7 @@ justify-content: center;
     grid-template-columns: auto auto;
     justify-content: space-evenly;
     background-color: rgb(250, 250, 250);
-    
+    gap: 20px;
     width: 30vw;
     height: 70%;
     
@@ -38,34 +40,43 @@ justify-content: center;
 }
 
 
-
-.inputBox:nth-child(2n){
-    justify-content: end;
-}
-
-.inputBox{
-   display: flex;
-   flex-wrap: wrap;
-   
-}
-
-.inputBox input{
+.name {
+    grid-column: 1/3;
+    display: flex;
+    flex-direction: column;
     
-    border-radius: 5px;
-    border: solid 1px rgb(206, 206, 206);
 }
 
-.inputBox textarea{
-    
-    border-radius: 5px;
-    border: solid 1px rgb(206, 206, 206);
+.difficulty{
+    display: flex;
+    flex-direction: column;
 }
 
-.inputBox label{
+.difficulty input{
+    width: 250px;
+}
+
+.duration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.duration input{
+    width: 250px;
+}
+
+.form label{
     
     font-size: 20px;
     font-weight: bold;
     
+}
+
+.form input {
+    height: 30px;
+    border-radius: 5px;
+    border: solid .5px rgb(202, 202, 202);
 }
 
 .title{
@@ -86,11 +97,14 @@ justify-content: center;
 }
 
 .btn{
-    
+    position: relative;
+    left: 90%;
 }
 
 .btnCreateDisabled{
-    
+    position: relative;
+    left: 90%;
+    bottom: 500px;
     
     background-color: gray;
 }

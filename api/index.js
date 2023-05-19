@@ -17,13 +17,15 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+require("dotenv").config();
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const getInfoApi = require("./src/controllers/getInfoApi.js");
+const PORT = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(PORT, () => {
     console.log("%s listening at 3001");
     getInfoApi(); // eslint-disable-line no-console
   });

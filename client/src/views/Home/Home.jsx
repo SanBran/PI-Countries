@@ -9,7 +9,7 @@ import Cards from "../../components/Cards/Cards";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 
 
-export default function Home ({currentPage, setCurrentPage, active, setActive, setLoading, refresh}) {
+export default function Home ({currentPage, setCurrentPage, active, setActive }) {
 
     const dispatch = useDispatch();
     const allCountries = useSelector(state => state.countries)
@@ -23,19 +23,16 @@ export default function Home ({currentPage, setCurrentPage, active, setActive, s
     const currentCountry = (!allCountries.error) && allCountries.slice(firstCountryIndex, lastCountryIndex);
 
     
-    useEffect(() => {
-
-        if (refresh) {
-            setLoading(true)
+    useEffect(() => {           
             dispatch(getCountries())
-            .then(res=>setLoading(false))
             .catch(err=>err)
             
-        }
+        
     }, [])
 
     useEffect(() => {
         dispatch(getActivities())
+        .catch(err=>err)
        }, [])
 
     const optionsSortByName = [

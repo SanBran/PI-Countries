@@ -20,7 +20,7 @@ const validate = (input) => {
   if (!input.duration) {
     errors.duration = "Please enter the duration.";
   }
-  if (input.season === 0) {
+  if (input.season.length === 0) {
     errors.season = "Please choose at least one season.";
   }
 

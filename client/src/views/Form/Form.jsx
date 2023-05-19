@@ -112,6 +112,7 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
 
    useEffect(() => {
     dispatch(getCountries())
+    .catch(err=>err)
    }, [])
 
    
@@ -121,43 +122,45 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
      <div className={styles.container}>
         <h1 className={styles.title}>Create your activity</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.inputBox}>
-                <label>Name: </label>
-                <input type="text" value={input.name} name="name" onChange={handleChange}/>
+            <div className={styles.name}>
+                <label >Name </label>
+                <input type="text"  value={input.name} name="name" onChange={handleChange}/>
                 <span className={styles.errors}>{errors.name && <p>{errors.name}</p>}</span>
             </div>
-            <div className={styles.inputBox}>
-                <label>difficulty: </label>
+            <div className={styles.difficulty}>
+                <label>Difficulty </label>
                 <input type="number" min="1" max="5" value={input.difficulty} name="difficulty" onChange={handleChange}/>
                 <span className={styles.errors}>{errors.difficulty && <p>{errors.difficulty}</p>}</span>
             </div>
-            <div className={styles.inputBox}>
-                <label className={styles.duration}>Duration: </label>
+            <div className={styles.duration}>
+                <label className={styles.duration}>Duration </label>
                 <input type="text" value={input.duration} name="duration" onChange={handleChange}/>
                 <span className={styles.errors}>{errors.duration && <p>{errors.duration}</p>}</span>
             </div>
             <div className={styles.inputBox}>
-            <label className={styles.season}>Seasons: </label>
+            <label className={styles.season}>Seasons </label>
             <Select className={styles.select}
                 options={selectSeasons}    
                 onChange={handleSelectS}
                 placeholder="Please select the appropriate seasons for this activity"   
                     />
+                    <span className={styles.errors}>{errors.season && <p>{errors.season}</p>}</span>
             </div>
             <div className={styles.inputBox}>
-            <label className={styles.countries}>Countries: </label>
+            <label className={styles.countries}>Countries </label>
             <Select className={styles.select}
                 options={selectCountries}    
                 onChange={handleSelectC}
                 placeholder="Please select the countries where you can practice this activity"   
                     />
+                    <span className={styles.errors}>{errors.countries && <p>{errors.countries}</p>}</span>
             </div>           
-            
-        </form>
-        {(errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) 
+            {(errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) 
                     ?  <button className={styles.btnCreateDisabled} disabled>Create Activity</button>
                     :  <button className={styles.btn}>Create Activity</button>
                     }
+        </form>
+        
      </div>
      </div>
    )

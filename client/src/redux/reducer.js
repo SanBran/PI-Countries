@@ -40,8 +40,6 @@ const reducer = (state = initialState, action) => {
       return { ...state };
 
     case ORDER_NAME:
-      let countriesOrderbyName = [];
-
       switch (action.payload) {
         case "Sort by Name":
           return {

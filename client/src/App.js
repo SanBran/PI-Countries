@@ -11,17 +11,11 @@ function App() {
   const { pathname } = useLocation(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [active, setActive] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [refresh, setRefresh] = useState(true);
 
   return (
     <div className="App">
       {pathname !== "/" && (
-        <NavBar
-          setCurrentPage={setCurrentPage}
-          setActive={setActive}
-          setLoading={setLoading}
-        />
+        <NavBar setCurrentPage={setCurrentPage} setActive={setActive} />
       )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -33,16 +27,11 @@ function App() {
               setCurrentPage={setCurrentPage}
               active={active}
               setActive={setActive}
-              setLoading={setLoading}
-              refresh={refresh}
             />
           }
         />
-        <Route path="/form" element={<Form setRefresh={setRefresh} />} />
-        <Route
-          path="/detail/:id"
-          element={<Detail setRefresh={setRefresh} />}
-        />
+        <Route path="/form" element={<Form />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </div>
   );
