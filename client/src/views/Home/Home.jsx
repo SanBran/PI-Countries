@@ -16,7 +16,7 @@ export default function Home ({currentPage, setCurrentPage, active, setActive })
     const activities = useSelector(state => state.activities)    
     const [order, setOrder] = useState('');
 
-    const countriesPerPage =  10; // Cards por página
+    const countriesPerPage =  9; // Cards por página
     const paginationSize = 7; // paginas visibles en paginación
     const lastCountryIndex = currentPage * countriesPerPage; 
     const firstCountryIndex = lastCountryIndex - countriesPerPage; 

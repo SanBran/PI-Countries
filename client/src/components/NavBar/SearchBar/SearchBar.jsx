@@ -23,9 +23,9 @@ const SearchBar = ({setCurrentPage, setActive, setLoading}) => {
 
     const handleSubmit = (e) => {
         navigate("/home")
-        setLoading(true)
+        
         dispatch(getCountryByName(searchString))
-        .then(res => setLoading(false))
+        
         .then(res => setActive(1))
         .catch(err => err)
 

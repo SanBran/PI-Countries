@@ -14,7 +14,6 @@ export default function Form () {
    const dispatch = useDispatch()
    const countries = useSelector((state) => state.countries)
 
-
 const selectCountries = []
 const selectSeasons = [
     {label:"spring", value: "spring"},
@@ -65,6 +64,7 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
         ...input,
         countries: [...input.countries, e.value]
     })
+
     setErrors(
         validate({
             ...input,
@@ -96,17 +96,27 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
    
 
    const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(input);
-    dispatch(postActivity(input))
-    alert("Activity created")
-    setInput({
-        name:"",
-        difficulty:"",
-        duration:"",
-        season: [],
-        countries: []
-    })
+    e.preventDefault(); 
+    e.stopPropagation();
+    if(!errors.name || !errors.difficulty || !errors.duration || !errors.season || !errors.countries){
+        dispatch(postActivity(input))
+        alert("Activity created")
+        setInput({
+            name:"",
+            difficulty:"",
+            duration:"",
+            season: [],
+            countries: []
+        })
+    }
+    
+   }
+
+   const handleDelete = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setInput({...input, countries: input.countries.filter((c) => c !== e.target.value)})
+    
    }
   
 
@@ -141,8 +151,7 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
             <label className={styles.season}>Seasons </label>
             <Select className={styles.select}
                 options={selectSeasons}    
-                onChange={handleSelectS}
-                placeholder="Please select the appropriate seasons for this activity"   
+                onChange={handleSelectS}  
                     />
                     <span className={styles.errors}>{errors.season && <p>{errors.season}</p>}</span>
             </div>
@@ -151,12 +160,16 @@ countries.map(e => selectCountries.push({label:e.name, value: e.name}))
             <Select className={styles.select}
                 options={selectCountries}    
                 onChange={handleSelectC}
-                placeholder="Please select the countries where you can practice this activity"   
                     />
                     <span className={styles.errors}>{errors.countries && <p>{errors.countries}</p>}</span>
+                    {input.countries.length?<div className={styles.countriesSelected}>
+                    {input.countries.map(c => (<span className={styles.countselect}>{c}<button type="close" className={styles.x} onClick={handleDelete} value={c}>x</button></span>))}
+                    </div>: <></>}
+                    
+                    
             </div>           
             {(errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) 
-                    ?  <button className={styles.btnCreateDisabled} disabled>Create Activity</button>
+                    ?  <button type="submit" className={styles.btnCreateDisabled} disabled>Create Activity</button>
                     :  <button className={styles.btn}>Create Activity</button>
                     }
         </form>

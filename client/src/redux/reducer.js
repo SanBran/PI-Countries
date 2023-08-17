@@ -16,6 +16,7 @@ let initialState = {
   countriesCopy: [],
   countryDetail: {},
   activities: [],
+  filteredCountries: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         countries: action.payload,
         countriesCopy: action.payload,
+        filteredCountries: action.payload,
       };
 
     case GET_COUNTRIES_BY_NAME:
@@ -44,7 +46,7 @@ const reducer = (state = initialState, action) => {
         case "Sort by Name":
           return {
             ...state,
-            countries: state.countries,
+            countries: state.countriesCopy,
           };
         case "A-Z":
           return {
@@ -78,7 +80,7 @@ const reducer = (state = initialState, action) => {
         case "Sort by Population":
           return {
             ...state,
-            countries: state.countries,
+            countries: state.countriesCopy,
           };
         case "Ascending":
           return {
@@ -106,29 +108,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         countries:
           action.payload === "Filter by Continent"
-            ? state.countries
+            ? state.countriesCopy
             : filteredCountriesByContinent,
       };
 
     case FILTER_ACTIVITY:
-      const filteredCountriesByActivity = state.countriesCopy.filter(
-        (country) =>
-          country.activities.some(
-            (activity) => activity.name === action.payload
-          )
+      const filteredCountriesByActivity = state.countries.filter((country) =>
+        country.activities.some((activity) => activity.name === action.payload)
       );
       return {
         ...state,
         countries:
           action.payload === "Filter by Activity"
-            ? state.countries
+            ? state.countriesCopy
             : filteredCountriesByActivity,
-      };
-
-    case CLEAN_DETAIL:
-      return {
-        ...state,
-        recipeDetail: {},
       };
 
     default:

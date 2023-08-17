@@ -1,18 +1,21 @@
-.start{
-  position: relative;
- top: 45%;
-  z-index: 5;
-}
-
 .container {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
   
  
   
 }
+.start{
+  position: relative;
+ width: 35vw;
+  z-index: 5;
+}
+
 
 video {
   position: absolute;
@@ -27,12 +30,12 @@ button{
   font-family:Arial, Helvetica, sans-serif;
   font-size:larger;
   position: relative;
-top: 40%;
+border-radius: 5px;
   z-index: 2;
   color: white;
   height: 50px;
   width: 100px;
-  background-color: #ffa31a;
+  background-color: #6243ec;
   border: none;
 }
 

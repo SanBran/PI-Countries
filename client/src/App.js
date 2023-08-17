@@ -9,6 +9,7 @@ import Detail from "./views/Detail/Details";
 
 function App() {
   const { pathname } = useLocation(1);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [active, setActive] = useState(1);
 

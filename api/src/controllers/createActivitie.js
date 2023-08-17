@@ -7,14 +7,14 @@ const createActivity = async (
   season,
   countries
 ) => {
-  let newActivity = await Activity.create({
+  const newActivity = await Activity.create({
     name,
     difficulty,
     duration,
     season,
   });
 
-  let country = await Country.findAll({
+  const country = await Country.findAll({
     where: {
       name: countries,
     },
